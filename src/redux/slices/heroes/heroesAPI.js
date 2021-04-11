@@ -9,7 +9,6 @@ const addHero = (hero) =>
 const removeHero = (id) =>
   axios.request({ url: `http://localhost:4000/heroes/${id}`, method: "DELETE" });
 
-
 const heroesAPI = { fetchHeroes, addHero, removeHero };
 
 export default heroesAPI;

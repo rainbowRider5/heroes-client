@@ -10,6 +10,7 @@ const App = () => (
     <Layout.Content>
       <Switch>
         <Route exact path="/" component={HeroList} />
+        <Route exact path="/hero/:id?" component={HeroList} />
         <Route component={NotFound} />
       </Switch>
     </Layout.Content>

@@ -2,25 +2,28 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Row, Col, Button, Typography } from "antd";
 import { PlusOutlined, FrownOutlined } from "@ant-design/icons";
+import {useHistory, useLocation, useParams} from "react-router-dom"
 import "./HeroList.less";
 import HeroItem from "./HeroItem/HeroItem";
 import HeroModal from "./HeroModal/HeroModal"
-import { fetchHeroes, addHero, removeHero } from "../../redux/slices/heroesSlice";
+import { fetchHeroes, addHero, removeHero } from "../../redux/slices/heroes/heroesSlice";
 
 const HeroList = () => {
   const heroes = useSelector((state) => state.heroesReducer.heroes);
   const loading = useSelector((state) => state.heroesReducer.loading);
   const [numberToDisplay, setNumberToDisplay] = useState(8);
-  const [activeHero, setActiveHero] = useState(null)
+  const history = useHistory();
+  const location = useLocation();
+  const params = useParams()
   const dispatch = useDispatch();
+  const activeHero = location.state ? location.state.hero : null;
 
-  const handleModalOk = (hero) => {
+  const handleModalOk = async (hero) => {
       if (activeHero === "NEW") {
-            dispatch(addHero(hero))
+          return dispatch(addHero(hero)).then(r => r)
       } else {
-          dispatch(removeHero(hero.id))
+          return dispatch(removeHero(hero.id)).then(r => r)
       }
-      setActiveHero(null)
   }
 
   const renderHeroes = () => {
@@ -39,10 +42,10 @@ const HeroList = () => {
                   Load more
                 </Button>
               </div>
-              <HeroItem hero={h} onClick={()=> setActiveHero(h)}/>
+              <HeroItem key={idx} hero={h} onClick={()=> history.push({pathname: `/hero/${h.id}`, state: {hero: h}})}/>
             </div>
           ) : (
-            <HeroItem hero={h} onClick={()=> setActiveHero(h)}/>
+            <HeroItem key={idx} hero={h} onClick={()=> history.push({pathname: `/hero/${h.id}`, state: {hero: h}})}/>
           )
         );
       } else {
@@ -60,29 +63,35 @@ const HeroList = () => {
     dispatch(fetchHeroes());
   }, []);
 
+  useEffect(() => {
+    if (params.id && (!location.state || !location.state.hero)) {
+      history.replace({pathname: location.pathname, state: {hero: heroes.find(h=>h.id === params.id)}})
+    }
+  }, [heroes, location.pathname]);
+
   return (
     <div className="HeroList">
       <Row className="HeroList__options">
-        <Col span={24}>
-          <Button type="success" onClick={()=> setActiveHero("NEW")}>
+        <Col xs={24} sm={4} lg={3} xl={2}>
+          <Button type="success" onClick={()=> history.push({pathname: "/hero/", state: {hero: "NEW"}})}>
             <PlusOutlined />
             Add hero
           </Button>
         </Col>
       </Row>
       <Row className="HeroList__header">
-        <Col span={7}>
+        <Col md={7} xs={0}>
           <Typography.Text type="secondary">Heros</Typography.Text>
         </Col>
-        <Col span={6}>
+        <Col md={6} xs={0}>
           <Typography.Text type="secondary">Type</Typography.Text>
         </Col>
-        <Col span={11}>
+        <Col md={11} xs={0}>
           <Typography.Text type="secondary">Description</Typography.Text>
         </Col>
       </Row>
       {renderHeroes()}
-      <HeroModal hero={activeHero} onCancel={() => setActiveHero(null)} onOk={handleModalOk} />
+      <HeroModal hero={activeHero} onCancel={()=> history.push("/")} onOk={handleModalOk} />
     </div>
   );
 };

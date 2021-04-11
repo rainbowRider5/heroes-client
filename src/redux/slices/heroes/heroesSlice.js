@@ -11,9 +11,9 @@ export const fetchHeroes = createAsyncThunk(
 
 export const addHero = createAsyncThunk(
   'users/addHero',
-  async (_, __) => {
-    const response = await heroesAPI.addHero()
-    return response.data.data
+  async (hero, __) => {
+    const response = await heroesAPI.addHero(hero)
+    return response.data
   }
 )
 
