@@ -7,7 +7,7 @@
     "@craco/craco": "^5.6.4",
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.9.0",
-    "@testing-library/react": "^11.0.0",
+    "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^11.1.0",
     "antd": "^4.5.2",
     "axios": "^0.21.1",
@@ -22,7 +22,9 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "lint": "eslint --fix ./src"
+    "test:watch": "craco test --watchAll",
+    "lint": "eslint --fix ./src",
+    "prettier": "prettier --write ./src"
   },
   "eslintConfig": {
     "extends": "react-app"

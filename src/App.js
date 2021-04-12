@@ -6,16 +6,16 @@ import HeroList from "./components/HeroList/HeroList";
 import { Layout } from "antd";
 
 const App = () => (
-      <Switch>
-        <Route exact path={["/","/hero/:id?" ]}>
-          <Layout className="container">
-            <Layout.Content>
-              <HeroList />
-            </Layout.Content>
-          </Layout>
-        </Route>
-        <Route component={NotFound} />
-      </Switch>
+  <Switch>
+    <Route exact path={["/", "/hero/:id?"]}>
+      <Layout className="container">
+        <Layout.Content>
+          <HeroList />
+        </Layout.Content>
+      </Layout>
+    </Route>
+    <Route component={NotFound} />
+  </Switch>
 );
 
 export default App;
