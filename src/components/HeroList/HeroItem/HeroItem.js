@@ -17,7 +17,7 @@ const HeroItem = ({ hero, onClick }) => {
       </div>)
     } else {
       return (<><img alt={`${hero.full_name} avatar`} src={hero.avatar_url} className="HeroItem__avatar" />
-        <Typography.Text style={{ lineHeight: "37px" }} strong>
+        <Typography.Text className="HeroItem__heading" strong>
           {hero.full_name}
         </Typography.Text></>)
     }
@@ -29,12 +29,12 @@ const HeroItem = ({ hero, onClick }) => {
         {renderFirstColumn()}
       </Col>
       <Col md={6} xs={0}>
-        <Typography.Text style={{ lineHeight: "37px" }}>
+        <Typography.Text className="HeroItem__heading">
           {hero.type.name}
         </Typography.Text>
       </Col>
       <Col md={11} className="HeroItem__description">
-        <Typography.Text style={{ lineHeight: "37px" }}>
+        <Typography.Text className="HeroItem__heading">
           {hero.description}
         </Typography.Text>
       </Col>

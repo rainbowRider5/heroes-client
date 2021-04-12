@@ -23,11 +23,27 @@
             background: rgba(255,255,255, 0.6);
         }
     }
+    &__loaderContainer {
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .ant-spin-dot {
+            .ant-spin-dot-item {
+                background-color: @success-color; 
+            }
+        }
+    }
     .noHeroesPrompt {
+        color: rgba(0,0,0,0.5);
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 5%;
         &__Icon {
             font-size: 20px;
         }
-        background: transparent !important;
     }
     
 }

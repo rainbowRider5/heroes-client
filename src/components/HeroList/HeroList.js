@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Row, Col, Button, Typography } from "antd";
+import { Row, Col, Button, Typography, Spin } from "antd";
 import { PlusOutlined, FrownOutlined } from "@ant-design/icons";
 import {useHistory, useLocation, useParams} from "react-router-dom"
 import "./HeroList.less";
@@ -28,7 +28,7 @@ const HeroList = () => {
 
   const renderHeroes = () => {
     if (loading) {
-      return "Loading...";
+      return <div className="HeroList__loaderContainer"><Spin size="large" /></div>;
     } else {
       if (heroes.length) {
         return heroes.slice(0, numberToDisplay).map((h, idx) =>
