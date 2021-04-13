@@ -1,4 +1,6 @@
-# Set-up guide
+# Heroes-client
+
+## Set-up
 Just run <code>yarn && yarn start</code>
 
 ## Checklist
@@ -11,7 +13,7 @@ Just run <code>yarn && yarn start</code>
 
 - User should be able to see a list of heroes along with their avatar, name, type, and description [`DONE`]
 - User should be able to load more heroes. It's up to you whether you chose infinite scroll or 'load more' button. [`DONE`]
-- If there are no more heroes to load, user should see that’s the end of the list and no more requests should be triggered. [`REFACTOR TO USE FIRST/STEP REQUEST`]
+- If there are no more heroes to load, user should see that’s the end of the list and no more requests should be triggered. [`DONE`]
 
 - User should be able to open the modal by clicking "Add hero" button in the main dashboard. [`DONE`]
 - User should be able to input hero details:avatar (url to avatar image), full name, description, type (by selecting type from the available options in the dropdown) [`DONE`]
@@ -27,4 +29,8 @@ Nice to have:
 - Hero Details modal should be accessible by manually entering the page using its URL address (e.g. /details/:id) [`DONE`]
 
 Tests:
-- You don't have to aim for 100% code coverage, but we'd love to see your skill in this field. So please test at least one feature. You can use Jest + enzyme/react-resting-library for this. [`Need to learn testing with jest, test may be poorly written`]
+- You don't have to aim for 100% code coverage, but we'd love to see your skill in this field. So please test at least one feature. You can use Jest + enzyme/react-resting-library for this. [`I failed setting-up tests for redux-connected components, If you'd be so kind to send me some resources, so I can learn to test my redux apps correctly, I'd be very grateful`]
+
+### Notes
+
+I didn't use TS cuz I'm still learining using it, It'd take much more time to get this task done and I've been overloaded with work recently.
