@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Row, Col, Button, Typography, Spin } from "antd";
 import { PlusOutlined, FrownOutlined } from "@ant-design/icons";
@@ -14,8 +14,8 @@ import {
 
 const HeroList = () => {
   const heroes = useSelector((state) => state.heroesReducer.heroes);
+  const totalHeroes = useSelector((state) => state.heroesReducer.total);
   const loading = useSelector((state) => state.heroesReducer.loading);
-  const [numberToDisplay, setNumberToDisplay] = useState(8);
   const history = useHistory();
   const location = useLocation();
   const params = useParams();
@@ -39,14 +39,11 @@ const HeroList = () => {
       );
     } else {
       if (heroes.length) {
-        return heroes.slice(0, numberToDisplay).map((h, idx) =>
-          idx === numberToDisplay - 1 && numberToDisplay < heroes.length ? (
+        return heroes.map((h, idx) =>
+          idx === 7 && heroes.length < totalHeroes ? (
             <div className="HeroList__loadMore">
               <div className="HeroList__loadMore__buttonContainer">
-                <Button
-                  type="primary"
-                  onClick={() => setNumberToDisplay(numberToDisplay + 8)}
-                >
+                <Button type="primary" onClick={() => dispatch(fetchHeroes(8))}>
                   Load more
                 </Button>
               </div>
@@ -83,7 +80,7 @@ const HeroList = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchHeroes());
+    dispatch(fetchHeroes(8));
   }, []);
 
   useEffect(() => {

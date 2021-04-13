@@ -1,7 +1,11 @@
 import axios from "axios";
 
-const fetchHeroes = () =>
-  axios.request({ url: "http://localhost:4000/heroes", method: "GET" });
+const fetchHeroes = (first, skip) =>
+  axios.request({
+    url: "http://localhost:4000/heroes",
+    method: "GET",
+    params: { first, skip },
+  });
 
 const addHero = (hero) =>
   axios.request({

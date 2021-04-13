@@ -3,9 +3,10 @@ import heroesAPI from "./heroesAPI";
 
 export const fetchHeroes = createAsyncThunk(
   "users/fetchHeroes",
-  async (_, __) => {
-    const response = await heroesAPI.fetchHeroes();
-    return response.data.data;
+  async (numberToFetch, thunkAPI) => {
+    const skip = thunkAPI.getState().heroesReducer.heroes.length;
+    const response = await heroesAPI.fetchHeroes(numberToFetch, skip);
+    return response.data;
   }
 );
 
@@ -26,13 +27,16 @@ export const heroesSlice = createSlice({
   name: "heroes",
   initialState: {
     heroes: [],
+    total: 0,
     loading: false,
   },
   reducers: {},
   extraReducers: {
     [fetchHeroes.pending]: (state, _) => ({ ...state, loading: true }),
-    [fetchHeroes.fulfilled]: (_, action) => ({
-      heroes: action.payload,
+    [fetchHeroes.fulfilled]: (state, action) => ({
+      ...state,
+      heroes: [...state.heroes, ...action.payload.data],
+      total: action.payload.total_count,
       loading: false,
     }),
     [fetchHeroes.rejected]: (state, _) => ({ ...state, loading: false }),

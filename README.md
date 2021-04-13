@@ -1,100 +1,30 @@
-# Use antd in create-react-app ✨
+# Set-up guide
+Just run <code>yarn && yarn start</code>
 
-[Create React App](https://facebook.github.io/create-react-app/) + [Ant Design](https://ant.design).
+## Checklist
+- User should, at all times, know that something is being loaded (e.g. spinner/fake content) [`DONE`]
+- The application should be responsive and work both on desktop and mobile devices [`DONE`]
+- Use this API: https://github.com/netguru/heroes-api It exposes both REST and GraphQL services. It's up to you which one you chose. [`DONE`](rest API)
+- Your app should look more or less like on the designs: https://netguru.invisionapp.com/share/8YU95KFGH9C.  It doesn't have to be pixel-perfect :) (designs contain views for both desktop and mobile screens) [`DONE`]
+- Your project should contain README.md with details on how to set-up your application [ `:)` ]
+- We should be able to run your app using only two commands: npm i && npm start (or yarn install && yarn start) [`DONE`]
 
-## Step by Step Documentation
+- User should be able to see a list of heroes along with their avatar, name, type, and description [`DONE`]
+- User should be able to load more heroes. It's up to you whether you chose infinite scroll or 'load more' button. [`DONE`]
+- If there are no more heroes to load, user should see that’s the end of the list and no more requests should be triggered. [`REFACTOR TO USE FIRST/STEP REQUEST`]
 
-- 🇺🇸 English: https://ant.design/docs/react/use-with-create-react-app
-- 🇨🇳 中文：https://ant.design/docs/react/use-with-create-react-app-cn
+- User should be able to open the modal by clicking "Add hero" button in the main dashboard. [`DONE`]
+- User should be able to input hero details:avatar (url to avatar image), full name, description, type (by selecting type from the available options in the dropdown) [`DONE`]
+- User should see an error when fields are not filled [`DONE`]
+- Heroes types available in dropdown select should be fetched from Heros API endpoint. [`DONE`]
+- User should be able to save the details by clicking the "Save" button. After the hero is saved modal should be closed and the hero should be added to the heroes list.  [`DONE`]
 
-## Preview
+- The details view should be a modal accessible by clicking on any item on the Heroes list. [`DONE`]
+- The modal should contain the following information: full name, type & description [`DONE`]
+- Additionally, the user should be able to delete the hero by clicking "Delete hero" button. After the hero is removed modal should be closed and heroes list should be updated. [`DONE`]
 
-```bash
-$ npm install
-$ npm start
-```
+Nice to have:
+- Hero Details modal should be accessible by manually entering the page using its URL address (e.g. /details/:id) [`DONE`]
 
-or:
-
-```bash
-$ yarn
-$ yarn start
-```
-
-## See more
-
-- [antd](http://github.com/ant-design/ant-design/)
-- [create-react-app](https://github.com/facebookincubator/create-react-app)
-- [craco](https://github.com/gsoft-inc/craco)
-- [craco-less](https://github.com/DocSpring/craco-less)
-
----
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Tests:
+- You don't have to aim for 100% code coverage, but we'd love to see your skill in this field. So please test at least one feature. You can use Jest + enzyme/react-resting-library for this. [`Need to learn testing with jest, test may be poorly written`]
