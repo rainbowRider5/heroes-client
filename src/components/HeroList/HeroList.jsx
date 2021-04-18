@@ -22,61 +22,58 @@ const HeroList = () => {
   const dispatch = useDispatch();
   const activeHero = location.state ? location.state.hero : null;
 
-  const handleModalOk = async (hero) => {
-    if (activeHero === "NEW") {
-      return dispatch(addHero(hero)).then((r) => r);
-    } else {
-      return dispatch(removeHero(hero.id)).then((r) => r);
-    }
-  };
+  const handleModalOk = async (hero) =>
+    activeHero === "NEW"
+      ? dispatch(addHero(hero)).then((r) => r)
+      : dispatch(removeHero(hero.id)).then((r) => r);
 
   const renderHeroes = () => {
-    if (loading) {
+    if (loading)
       return (
-        <div className="HeroList__loaderContainer">
+        <div className="HeroList__loaderContainer" data-testid="large-spinner">
           <Spin size="large" />
         </div>
       );
-    } else {
-      if (heroes.length) {
-        return heroes.map((h, idx) =>
-          idx === 7 && heroes.length < totalHeroes ? (
-            <div className="HeroList__loadMore">
-              <div className="HeroList__loadMore__buttonContainer">
-                <Button type="primary" onClick={() => dispatch(fetchHeroes(8))}>
-                  Load more
-                </Button>
-              </div>
-              <HeroItem
-                key={idx}
-                hero={h}
-                onClick={() =>
-                  history.push({
-                    pathname: `/hero/${h.id}`,
-                    state: { hero: h },
-                  })
-                }
-              />
-            </div>
-          ) : (
-            <HeroItem
-              key={idx}
-              hero={h}
-              onClick={() =>
-                history.push({ pathname: `/hero/${h.id}`, state: { hero: h } })
-              }
-            />
-          )
-        );
-      } else {
-        return (
-          <div className="noHeroesPrompt">
-            <FrownOutlined className="noHeroesPrompt__Icon" />
-            <p className="noHeroesPrompt__Text">No heroes found</p>
+
+    if (!heroes.length)
+      return (
+        <div className="noHeroesPrompt">
+          <FrownOutlined className="noHeroesPrompt__Icon" />
+          <p className="noHeroesPrompt__Text">No heroes found</p>
+        </div>
+      );
+
+    return heroes.map((h, idx) =>
+      idx === 7 && heroes.length < totalHeroes ? (
+        <div className="HeroList__loadMore" key={idx}>
+          <div className="HeroList__loadMore__buttonContainer">
+            <Button type="primary" onClick={() => dispatch(fetchHeroes(8))}>
+              Load more
+            </Button>
           </div>
-        );
-      }
-    }
+          <HeroItem
+            key={idx}
+            hero={h}
+            id={`hero_${idx}`}
+            onClick={() =>
+              history.push({
+                pathname: `/hero/${h.id}`,
+                state: { hero: h },
+              })
+            }
+          />
+        </div>
+      ) : (
+        <HeroItem
+          key={idx}
+          hero={h}
+          id={`hero_${idx}`}
+          onClick={() =>
+            history.push({ pathname: `/hero/${h.id}`, state: { hero: h } })
+          }
+        />
+      )
+    );
   };
 
   useEffect(() => {

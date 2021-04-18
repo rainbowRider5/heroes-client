@@ -97,6 +97,7 @@ const HeroModal = ({ hero, onOk, onCancel }) => {
               rules={[{ required: true, message: "Avatar URL is required" }]}
             >
               <Input
+                data-testid={"avatar_url_input"}
                 value={heroToAdd.avatar_url}
                 onChange={({ target }) =>
                   setHeroToAdd({ ...heroToAdd, avatar_url: target.value })
@@ -110,6 +111,7 @@ const HeroModal = ({ hero, onOk, onCancel }) => {
               rules={[{ required: true, message: "Name is required" }]}
             >
               <Input
+                data-testid={"full_name_input"}
                 value={heroToAdd.full_name}
                 onChange={({ target }) =>
                   setHeroToAdd({ ...heroToAdd, full_name: target.value })
@@ -123,6 +125,7 @@ const HeroModal = ({ hero, onOk, onCancel }) => {
               rules={[{ required: true, message: "Type is required" }]}
             >
               <Select
+                data-testid={"type_select"}
                 placeholder="Select type"
                 value={heroToAdd.type}
                 onChange={(value) =>
@@ -147,6 +150,7 @@ const HeroModal = ({ hero, onOk, onCancel }) => {
               rules={[{ required: true, message: "Description" }]}
             >
               <Input.TextArea
+                data-testid={"description_textarea"}
                 value={heroToAdd.description}
                 onChange={({ target }) =>
                   setHeroToAdd({ ...heroToAdd, description: target.value })

@@ -26,11 +26,7 @@ Just run <code>yarn && yarn start</code>
 - Additionally, the user should be able to delete the hero by clicking "Delete hero" button. After the hero is removed modal should be closed and heroes list should be updated. [`DONE`]
 
 Nice to have:
-- Hero Details modal should be accessible by manually entering the page using its URL address (e.g. /details/:id) [`DONE`]
+- Hero Details modal should be accessible by manually entering the page using its URL address (e.g. /details/:id) [`DONE, not sure If you'll like my workaround`]
 
 Tests:
-- You don't have to aim for 100% code coverage, but we'd love to see your skill in this field. So please test at least one feature. You can use Jest + enzyme/react-resting-library for this. [`I failed setting-up tests for redux-connected components, If you'd be so kind to send me some resources, so I can learn to test my redux apps correctly, I'd be very grateful`]
-
-### Notes
-
-I didn't use TS cuz I'm still learining using it, It'd take much more time to get this task done and I've been overloaded with work recently.
+- You don't have to aim for 100% code coverage, but we'd love to see your skill in this field. So please test at least one feature. You can use Jest + enzyme/react-resting-library for this. [`DONE`]
