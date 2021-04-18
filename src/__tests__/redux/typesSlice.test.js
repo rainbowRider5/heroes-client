@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-
 import typesAPI from "../../redux/slices/types/typesAPI";
 import typesReducer, { fetchTypes } from "../../redux/slices/types/typesSlice";
 

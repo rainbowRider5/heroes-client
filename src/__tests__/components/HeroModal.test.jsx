@@ -3,7 +3,6 @@ import "@testing-library/jest-dom";
 import {
   waitForElementToBeRemoved,
   fireEvent,
-  prettyDOM,
   render,
   screen,
 } from "@testing-library/react";

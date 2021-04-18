@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-
 import heroesAPI from "../../redux/slices/heroes/heroesAPI";
 import heroesReducer, {
   fetchHeroes,

@@ -1,7 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-
 import NotFound from "../../components/NotFound/NotFound";
 import store from "../../redux/store";
 import { WrappedComponent } from "../../App";

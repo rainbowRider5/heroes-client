@@ -1,7 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom";
 import { render, screen, act } from "@testing-library/react";
-
 import heroesAPI from "../../redux/slices/heroes/heroesAPI";
 import typesAPI from "../../redux/slices/types/typesAPI";
 import HeroList from "../../components/HeroList/HeroList";
